@@ -2,6 +2,7 @@
 //float x, y, velX, velY, diam;
 PVector loc;
 PVector vel;
+PVector acc;
 float diam;
 
 void setup() {
@@ -16,21 +17,23 @@ void setup() {
   //velX = random(-5, 5);
   //velY = random(-5, 5);
   loc =new PVector(width/2,height/2);
-  //vel= new PVector(random(1,3),random(1,3));
+  vel= new PVector(1,1);
   
 }
 
 void draw() {
   //draw background to cover previous frame
   background(0);
-
+acc= PVector.random2D();
   //draw ball
   ellipse(loc.x, loc.y, diam, diam);
 
   //add velocity to position
   //x += velX;
   //y += velY;
-      vel= new PVector(random(-5,5),random(-5,5));
+      //vel= new PVector(random(-5,5),random(-5,5));
+  vel.add(acc);
+  vel.limit(5);
   loc.add(vel);
  
 
